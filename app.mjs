@@ -3,35 +3,25 @@ import { customAlphabet } from 'nanoid'
 const nanoid = customAlphabet('1234567890', 20)
 import { MongoClient } from "mongodb"
 import dotenv from "dotenv";
+import cors from "cors"
 dotenv.config();
-// import './config/index.mjs'
 
 const mongodbURI = `mongodb+srv://dbuser:dbpassword@cluster0.zttuzw8.mongodb.net/?retryWrites=true&w=majority`
 const client = new MongoClient(mongodbURI);
 const database = client.db('ecomerce');
 const productsCollection = database.collection('products');
-// async function connectToMongoDB() {
-//   try {
-//     // Connect to the MongoDB server
-//     await client.connect();
-//     console.log('Connected to MongoDB');
-//   } catch (err) {
-//     console.error('Error connecting to MongoDB:', err);
-//   }
-// }
 
 const app = express();
 app.use(express.json());
+
+app.use(cors({ origin: "*" }))
 
 app.get("/", (req, res) => {
   res.send("hello world!");
 });
 
-
-
-
-app.get("/products", async (req, res) => {
-  const data = await productsCollection.find()
+app.get("/products", (req, res) => {
+  const data = productsCollection.find()
   res.send({
     message: "all products",
     data: data

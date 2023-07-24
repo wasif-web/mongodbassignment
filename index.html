@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRUD Operations</title>
+  <style>
+    /* Add some basic styles for the table */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+    }
+  </style>
+</head>
+<body>
+  <h1>CRUD Operations</h1>
+
+  <!-- Form to add new items -->
+  <div id="itemForm">
+    <input type="text" id="itemName" placeholder="Item name" required>
+    <input type="text" id="itemPrice" placeholder="Item name" required>
+    <input type="number" id="itemdescription" placeholder="Quantity" required>
+    <button type="submit" id="button">Add Item</button>
+  </div>
+
+  <!-- Table to display existing items -->
+  <table id="itemTable">
+    <thead>
+      <tr>
+        <th>Item Name</th>
+        <th>Quantity</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody id="tableBody">
+      <!-- Table rows will be added dynamically using JavaScript -->
+    </tbody>
+  </table>
+
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="script.mjs"></script>
+</body>
+</html>
